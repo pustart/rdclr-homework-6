@@ -58,7 +58,7 @@ body {
   padding: 0.5rem;
   min-height: 100vh;
   height: 100%;
-  width: 100%;
+  width: 100vw;
 
   @include utils.flex(row, center, center);
 }
