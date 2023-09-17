@@ -1,0 +1,17 @@
+    <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" fill="none">
+    <style>
+      #slider-favicon {
+        stroke: #000;
+        stroke-width: 50px;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        #slider-favicon {
+          stroke: #fff;
+          stroke-width: 50px;
+        }
+      }
+    </style>
+        <path id="slider-favicon" stroke-linecap="round" stroke-linejoin="round"
+          d="m234.667 192 64 64-64 64M448 256c0-106.039-85.961-192-192-192S64 149.961 64 256s85.961 192 192 192 192-85.961 192-192Z" />
+    </svg>

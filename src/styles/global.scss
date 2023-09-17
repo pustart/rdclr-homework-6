@@ -13,6 +13,13 @@ html {
   box-sizing: inherit;
 }
 
+:root {
+  --base-strong: #000;
+  --base-weak: #FFF;
+  --faint-weak: #C4C4C4;
+  --faint-strong: grey;
+}
+
 blockquote,
 dl,
 dd,
@@ -48,8 +55,12 @@ ul {
 
 body {
   margin: 0;
-  padding: 0;
+  padding: 0.5rem;
   min-height: 100vh;
+  height: 100%;
+  width: 100vw;
+
+  @include utils.flex(row, center, center);
 }
 
 a {
@@ -66,4 +77,23 @@ button {
   border: none;
   font-size: inherit;
   text-decoration: none;
+}
+
+.item-1 {
+  background-color: cornflowerblue;
+}
+
+.item-2 {
+  background-color: coral;
+}
+
+.item-3 {
+  background-color: darkseagreen;
+}
+
+.item {
+  @include utils.flex(row, center, center);
+  user-select: none;
+  height: 100%;
+  width: 100%;
 }
