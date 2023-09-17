@@ -60,7 +60,7 @@ function useSwipe(ref, onSwipe) {
       node.removeEventListener('touchstart', handleTouchStart);
       node.removeEventListener('touchend', handleTouchEnd);
     };
-  }, []);
+  }, [onSwipe, ref]);
 }
 
 export default useSwipe;
