@@ -5,7 +5,7 @@ import Button from '../../core/Button/Button';
 import styles from './Carousel.module.scss';
 import { ReactComponent as LeftArrow } from '../../../assets/icons/chevron-left.svg';
 import { ReactComponent as RightArrow } from '../../../assets/icons/chevron-right.svg';
-import { $currentSlide, $offset, offsetLeft, offsetRight } from './model';
+import { offsetLeft, offsetRight } from './model';
 import useSwipe from '../../../hooks/useSwipe';
 import { SWIPE_DIRECTION } from '../../../constants/swipeDirection.constants';
 

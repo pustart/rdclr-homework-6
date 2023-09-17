@@ -1,14 +1,18 @@
-import { useState, useRef, useEffect} from 'react';
+import { useRef, useEffect} from 'react';
 import { useStore, useUnit } from 'effector-react';
 import styles from './ViewWindow.module.scss';
-import { $offset, $viewWidth, viewWidthChanged } from '../../modules/Carousel/model';
+import { $offset, $viewWidth, slideLengthSet, viewWidthChanged } from '../../modules/Carousel/model';
 import Item from './Item/Item';
 
 function ViewWindow({ children }) {
   const offset = useStore($offset);
   const viewWidth = useStore($viewWidth);
-  const onViewWidthChanged = useUnit(viewWidthChanged);
+  const [onViewWidthChanged, setSlideLength] = useUnit([viewWidthChanged, slideLengthSet]);
   const viewWindowRef = useRef();
+
+  useEffect(() => {
+    setSlideLength(children.length);
+  }, [children, setSlideLength]);
 
   useEffect(() => {
     const resizeHandler = () => {
