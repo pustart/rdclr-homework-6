@@ -1,4 +1,4 @@
-import {useRef } from 'react';
+import {useRef, useState, useEffect } from 'react';
 import { useUnit } from 'effector-react';
 import ViewWindow from '../../elements/ViewWindow/ViewWindow';
 import Button from '../../core/Button/Button';
@@ -11,16 +11,32 @@ import { SWIPE_DIRECTION } from '../../../constants/swipeDirection.constants';
 
 function Carousel({ children }) {
   const [rightArrowClick, leftArrowClick] = useUnit([offsetRight, offsetLeft]);
+  const [autoScrolling, setAutoScrolling] = useState(false);
   const carouselRef = useRef();
   useSwipe(carouselRef, handleSwipe);
 
   function handleSwipe(direction) {
-      if (direction === SWIPE_DIRECTION.right) {
-        leftArrowClick();
-      } else if (direction === SWIPE_DIRECTION.left) {
+    if (direction === SWIPE_DIRECTION.right) {
+      leftArrowClick();
+    } else if (direction === SWIPE_DIRECTION.left) {
+      rightArrowClick();
+    }
+  }
+
+  const toggleAutoScroll = () => {
+    setAutoScrolling(!autoScrolling);
+  };
+
+  useEffect(() => {
+    const autoScroll = () => {
+      if (autoScrolling) {
         rightArrowClick();
       }
-  };
+    };
+
+    const intervalId = setInterval(autoScroll, 2000);
+    return () => clearInterval(intervalId);
+  }, [autoScrolling, rightArrowClick]);
 
   return (
     <article className={styles['carousel-container']}>
@@ -37,6 +53,7 @@ function Carousel({ children }) {
           icon={<RightArrow />}
         />
       </section>
+      <Button type='button' onClick={toggleAutoScroll} view='default' className={styles['autoscroll-btn']}>{autoScrolling ? 'Turn off autoscroll' : 'Turn on autoscroll'}</Button>
     </article>
   );
 }

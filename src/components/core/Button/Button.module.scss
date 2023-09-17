@@ -1,4 +1,23 @@
 .button {
   cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
   color: var(--base-strong);
+
+  &__default {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 2px solid var(--faint-weak);
+    color: var(--faint-strong);
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &:hover {
+      color: var(--base-strong);
+      border-color: var(--base-strong);
+    }
+  }
 }
