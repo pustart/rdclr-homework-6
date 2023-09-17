@@ -60,6 +60,7 @@ body {
   height: 100%;
   width: 100vw;
 
+  @include utils.font(1rem, 400, 1.25rem);
   @include utils.flex(row, center, center);
 }
 
