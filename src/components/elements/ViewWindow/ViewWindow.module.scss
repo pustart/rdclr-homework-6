@@ -1,0 +1,19 @@
+@use '../../../styles/utils.scss';
+
+.view-window {
+  height: 100%;
+  width: 450px;
+  overflow: hidden;
+  border-radius: 0.5rem;
+
+  &__items-container {
+    height: 100%;
+    border-radius: 0.5rem;
+    transition: translate;
+    transition-property: transform;
+    transition-duration: 250ms;
+    transition-timing-function: ease-in-out;
+
+    @include utils.flex(row, center, flex-start);
+  }
+}

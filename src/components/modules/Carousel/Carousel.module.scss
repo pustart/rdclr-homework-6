@@ -1,0 +1,23 @@
+@use '../../../styles/utils.scss';
+
+.carousel-container {
+  @include utils.flex(column, center, center);
+  height: 100%;
+  width: 100vw;
+}
+
+.carousel {
+  @include utils.flex(row, center, space-between);
+  gap: 0.2rem;
+  height: 150px;
+
+  &__arrow-btn {
+    width: 2rem;
+    height: 2rem;
+    color: var(--faint-strong);
+
+    &:hover {
+      color: var(--base-strong);
+    }
+  }
+}
