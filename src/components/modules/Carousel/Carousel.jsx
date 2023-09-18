@@ -1,15 +1,17 @@
 import {useRef, useState, useEffect } from 'react';
-import { useUnit } from 'effector-react';
+import { useUnit, useStore } from 'effector-react';
 import ViewWindow from '../../elements/ViewWindow/ViewWindow';
 import Button from '../../core/Button/Button';
 import styles from './Carousel.module.scss';
 import { ReactComponent as LeftArrow } from '../../../assets/icons/chevron-left.svg';
 import { ReactComponent as RightArrow } from '../../../assets/icons/chevron-right.svg';
-import { offsetLeft, offsetRight } from './model';
+import { $slideLength, offsetLeft, offsetRight } from './model';
 import useSwipe from '../../../hooks/useSwipe';
 import { SWIPE_DIRECTION } from '../../../constants/swipeDirection.constants';
+import Pagination from '../../elements/Pagination/Pagination';
 
 function Carousel({ children }) {
+  const slides = useStore($slideLength);
   const [rightArrowClick, leftArrowClick] = useUnit([offsetRight, offsetLeft]);
   const [autoScrolling, setAutoScrolling] = useState(false);
   const carouselRef = useRef();
@@ -53,6 +55,7 @@ function Carousel({ children }) {
           icon={<RightArrow />}
         />
       </section>
+      <Pagination pagesCount={slides}/>
       <Button type='button' onClick={toggleAutoScroll} view='default' className={styles['autoscroll-btn']}>{autoScrolling ? 'Turn off autoscroll' : 'Turn on autoscroll'}</Button>
     </article>
   );
