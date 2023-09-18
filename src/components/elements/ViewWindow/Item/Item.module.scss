@@ -1,3 +1,16 @@
-.item__container {
-  height: 100%;
+.item {
+  &__container {
+    position: relative;
+    height: 100%;
+  }
+
+  &__title {
+    color: var(--base-weak);
+    position: absolute;
+    padding: 0.5rem 1rem;
+    bottom: 16px;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
 }

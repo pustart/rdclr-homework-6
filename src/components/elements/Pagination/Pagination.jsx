@@ -8,7 +8,7 @@ function Pagination({ pagesCount }) {
   const currentSlide = useStore($currentSlide);
 
   return (
-    <div className={styles['pagination-container']}>
+    <section className={styles['pagination-container']}>
       {points.map((point, index) => (
         <div
           key={point}
@@ -17,7 +17,7 @@ function Pagination({ pagesCount }) {
           })}
         />
       ))}
-    </div>
+    </section>
   );
 }
 

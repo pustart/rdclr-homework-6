@@ -10,7 +10,7 @@ import useSwipe from '../../../hooks/useSwipe';
 import { SWIPE_DIRECTION } from '../../../constants/swipeDirection.constants';
 import Pagination from '../../elements/Pagination/Pagination';
 
-function Carousel({ children }) {
+function Carousel({ children, items = null }) {
   const slides = useStore($slideLength);
   const [rightArrowClick, leftArrowClick] = useUnit([offsetRight, offsetLeft]);
   const [autoScrolling, setAutoScrolling] = useState(false);
@@ -48,7 +48,7 @@ function Carousel({ children }) {
           onClick={leftArrowClick}
           icon={<LeftArrow />}
         />
-        <ViewWindow>{children}</ViewWindow>
+        <ViewWindow items={items}>{children}</ViewWindow>
         <Button
           className={styles['carousel__arrow-btn']}
           onClick={rightArrowClick}

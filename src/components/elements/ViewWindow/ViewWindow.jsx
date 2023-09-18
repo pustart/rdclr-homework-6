@@ -4,7 +4,7 @@ import styles from './ViewWindow.module.scss';
 import { $offset, $viewWidth, slideLengthSet, viewWidthChanged } from '../../modules/Carousel/model';
 import Item from './Item/Item';
 
-function ViewWindow({ children }) {
+function ViewWindow({ children, items = null }) {
   const offset = useStore($offset);
   const viewWidth = useStore($viewWidth);
   const [onViewWidthChanged, setSlideLength] = useUnit([viewWidthChanged, slideLengthSet]);
@@ -37,13 +37,11 @@ function ViewWindow({ children }) {
         }}
       >
         {children.map((item, index) => (
-          <Item key={index}>{item}</Item>
+          <Item key={index} item={items[index]}>{item}</Item>
         ))}
       </div>
     </div>
   );
 }
-
-// ViewWindow.Item = Item;
 
 export default ViewWindow;

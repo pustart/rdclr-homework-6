@@ -40,5 +40,12 @@
 }
 
 .autoscroll-btn {
-  width: 252px;
+  max-width: 252px;
+  @include utils.font(0.75rem, 600, 1rem);
+  padding: 0.5rem;
+
+  @include media.desktop {
+    padding: 0.75rem;
+    @include utils.font(1rem, 600, 1.5rem);
+  }
 }
